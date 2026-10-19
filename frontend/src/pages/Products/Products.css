@@ -1,0 +1,520 @@
+
+/* ========================================
+   GEARZONE - PRODUCTS PAGE
+   Minimal White / Black / Gray
+======================================== */
+
+.products-section {
+  width: 80%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.products-heading h2 {
+  font-size: clamp(30px, 3vw, 42px);
+}
+
+/* Tiêu đề trang */
+.products-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.products-heading .section-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.products-heading h2 {
+  margin: 0 0 12px;
+  color: #171717;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+.products-heading p {
+  margin: 0;
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.products-count {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background: #fafafa;
+  color: #555555;
+  font-size: 12px;
+}
+
+/* Thanh tìm kiếm và sắp xếp */
+.products-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.products-search {
+  display: flex;
+  width: min(100%, 440px);
+  min-height: 46px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #777777;
+  transition: border-color 0.2s ease;
+}
+
+.products-search:focus-within {
+  border-color: #888888;
+}
+
+.products-search svg {
+  flex-shrink: 0;
+}
+
+.products-search input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #222222;
+  font-size: 13px;
+  box-shadow: none;
+}
+
+.products-search input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.products-search input::placeholder {
+  color: #999999;
+}
+
+.products-search input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.products-sort {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #666666;
+}
+
+.products-sort svg {
+  flex-shrink: 0;
+}
+
+.products-sort label {
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.products-sort select {
+  width: auto;
+  min-width: 125px;
+  min-height: 42px;
+  padding: 0 22px 0 4px;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  color: #222222;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Bộ lọc danh mục */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.category-filter {
+  min-height: 38px;
+  padding: 8px 17px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.category-filter:hover {
+  border-color: #777777;
+  color: #111111;
+}
+
+.category-filter.active {
+  border-color: #222222;
+  background: #222222;
+  color: #ffffff;
+}
+
+/* Trạng thái không tìm thấy sản phẩm */
+.products-empty {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  border: 1px dashed #dddddd;
+  border-radius: 3px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.products-empty > svg {
+  margin-bottom: 18px;
+  color: #888888;
+}
+
+.products-empty h3 {
+  margin-bottom: 8px;
+  color: #222222;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.products-empty p {
+  margin-bottom: 20px;
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.products-empty button {
+  min-height: 40px;
+  padding: 9px 18px;
+  border: 1px solid #222222;
+  border-radius: 3px;
+  background: #222222;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.products-empty button:hover {
+  background: #444444;
+}
+
+/* Responsive: laptop và tablet */
+@media (max-width: 1024px) {
+  .products-section {
+    padding: 52px 4%;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-section {
+    padding: 40px 24px 56px;
+  }
+
+  .products-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .products-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .products-search {
+    width: 100%;
+  }
+
+  .products-sort {
+    justify-content: flex-start;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .category-filters {
+    gap: 8px;
+  }
+}
+
+/* Responsive: điện thoại */
+@media (max-width: 480px) {
+  .products-section {
+    padding: 32px 16px 44px;
+  }
+
+  .products-heading h2 {
+    font-size: 28px;
+  }
+
+  .products-heading p {
+    font-size: 13px;
+  }
+
+  .products-grid {
+    gap: 12px 10px;
+  }
+
+  .category-filter {
+    min-height: 36px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .products-sort {
+    gap: 7px;
+    padding: 0 10px;
+  }
+
+  .products-sort select {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .products-count {
+    font-size: 11px;
+  }
+}
+
+
+/* ===== GEARZONE CATEGORY BANNER ===== */
+
+.category-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 280px;
+  margin: 28px 0 32px;
+  padding: 38px 44px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(110deg, #111, #353535);
+  box-sizing: border-box;
+}
+
+.category-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 570px;
+}
+
+.category-banner-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  color: #c7c7c7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.category-banner-content h2 {
+  max-width: 520px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.category-banner-content p {
+  max-width: 410px;
+  margin: 16px 0 24px;
+  color: #fffdfd;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.category-banner-content h3 {
+  color: #fffdfd;
+}
+
+.category-banner-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid transparent;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.category-banner-button:hover {
+  background: transparent;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: #d1d5db;
+}
+
+.category-banner-art {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 260px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.category-banner-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.category-banner-icon {
+  width: 105px;
+  height: 105px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.category-banner-decoration {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: rgba(255, 255, 255, 0.08);
+  font-size: 75px;
+  font-weight: 900;
+  letter-spacing: -7px;
+}
+
+/* Banner theo từng danh mục */
+
+.banner-all {
+  background: linear-gradient(110deg, #111, #454545);
+}
+
+.banner-mouse {
+  background: linear-gradient(110deg, #151515, #651f1f);
+}
+
+.banner-keyboard {
+  background: linear-gradient(110deg, #101010, #343434);
+}
+
+.banner-headset {
+  background: linear-gradient(110deg, #101010, #24433f);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .category-banner {
+    min-height: 260px;
+    padding: 30px 24px;
+  }
+
+  .category-banner-art {
+    right: -100px;
+    opacity: 0.3;
+  }
+
+  .category-banner-content {
+    max-width: 100%;
+  }
+
+  .category-banner-content h2 {
+    max-width: 420px;
+    font-size: clamp(27px, 5vw, 36px);
+  }
+
+  .category-banner-content p {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-banner {
+    min-height: 245px;
+    padding: 26px 18px;
+  }
+
+  .category-banner-content h2 {
+    font-size: 27px;
+  }
+
+  .category-banner-eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+  }
+
+  .category-banner-content p {
+    font-size: 13px;
+  }
+
+  .category-banner-art {
+    right: -140px;
+  }
+}

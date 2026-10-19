@@ -1,0 +1,940 @@
+
+/* ========================================
+   GEARZONE - MINIMAL BLACK & WHITE
+   App.css
+======================================== */
+
+/* ========================================
+   1. BIẾN GIAO DIỆN
+======================================== */
+
+:root {
+  --gz-text: #222222;
+  --gz-muted: #777777;
+  --gz-border: #e8e8e8;
+  --gz-bg: #ffffff;
+  --gz-light: #f6f6f6;
+  --gz-black: #171717;
+  --gz-transition: 0.25s ease;
+}
+
+/* ========================================
+   2. TỔNG THỂ
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--gz-bg);
+  color: var(--gz-text);
+}
+
+.app main {
+  width: 100%;
+  min-width: 0;
+}
+
+.app section {
+  box-sizing: border-box;
+}
+
+.app a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app button {
+  font: inherit;
+}
+
+.app img {
+  max-width: 100%;
+}
+
+/* ========================================
+   3. HERO SLIDESHOW
+======================================== */
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 650px;
+  height: min(760px, 90vh);
+  overflow: hidden;
+  padding: 130px 5% 100px;
+  background: #101010;
+  color: #ffffff;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.045);
+  transition:
+    opacity 1s ease,
+    transform 6s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.7) 38%,
+      rgba(0, 0, 0, 0.25) 75%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.55),
+      transparent 35%,
+      rgba(0, 0, 0, 0.22)
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  max-width: 760px;
+  margin: 0;
+  color: #ffffff;
+  animation: heroContentEnter 0.65s ease both;
+}
+
+@keyframes heroContentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero-label::before {
+  content: "";
+  width: 27px;
+  height: 1px;
+  background: #ffffff;
+}
+
+.hero-content h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(36px, 5vw, 66px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -2px;
+}
+
+.hero-content h1 span {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.hero-content > p {
+  max-width: 530px;
+  margin: 24px 0 30px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hero-note {
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* Nút chính */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: fit-content;
+  min-height: 50px;
+  padding: 0 22px;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #111111 !important;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: #ffffff !important;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.17);
+}
+
+/* Nút chuyển slide */
+
+.hero-arrow {
+  position: absolute;
+  top: 54%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.hero-arrow:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #111111;
+}
+
+.hero-arrow-left {
+  left: 24px;
+}
+
+.hero-arrow-right {
+  right: 24px;
+}
+
+/* Chấm chuyển slide */
+
+.hero-pagination {
+  position: absolute;
+  z-index: 2;
+  bottom: 36px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.hero-dot.active {
+  width: 30px;
+  background: #ffffff;
+}
+
+.hero-counter {
+  position: absolute;
+  right: 5%;
+  bottom: 34px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.hero-counter span:first-child {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hero-counter-divider {
+  width: 35px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ========================================
+   4. TIÊU ĐỀ CÁC KHU VỰC
+======================================== */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-heading h2 {
+  margin: 0 0 14px;
+  color: var(--gz-black);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--gz-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.section-eyebrow,
+.visual-caption {
+  display: inline-block;
+  color: var(--gz-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   5. DANH MỤC NỔI BẬT
+======================================== */
+
+.categories-section {
+  width: 80%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.categories-section .section-heading {
+  margin-bottom: 36px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  border: 1px solid var(--gz-border);
+  border-radius: 4px;
+  background: #ffffff;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  border-color: #999999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  background: #f3f3f3;
+  color: #222222;
+}
+
+.category-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.category-card h3 {
+  margin: 0 0 10px;
+  color: #222222;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.category-card > p {
+  margin: 0;
+  color: var(--gz-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.category-arrow {
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gz-border);
+  border-radius: 50%;
+  color: #222222;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.category-card:hover .category-arrow {
+  background: #222222;
+  color: #ffffff;
+}
+
+/* ========================================
+   6. BENEFITS - KHU VỰC LỢI ÍCH
+======================================== */
+
+
+/* ========================================
+   BENEFITS - CẤU TRÚC GIỐNG CATEGORIES
+======================================== */
+
+.benefits-section {
+  width: 80%;
+  max-width: 1800px;
+  margin: 0 auto 80px;
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+/* Tiêu đề khu vực */
+.benefits-section .section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+/* Lưới 3 cột giống Categories */
+.benefits-section .benefits-grid {
+  display: grid;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+/* Thẻ lợi ích giống category-card */
+.benefits-section .benefit-item {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 32px;
+  border: 1px solid var(--gz-border);
+  border-radius: 4px;
+  background: #ffffff;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Hiệu ứng hover giống Categories */
+.benefits-section .benefit-item:hover {
+  transform: translateY(-5px);
+  border-color: #999999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Icon */
+.benefits-section .benefit-icon {
+  display: flex;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  background: #f3f3f3;
+  color: #222222;
+}
+
+.benefits-section .benefit-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Tiêu đề */
+.benefits-section .benefit-item h3 {
+  margin: 0 0 10px;
+  color: #222222;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Mô tả */
+.benefits-section .benefit-item p {
+  margin: 0;
+  color: var(--gz-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .benefits-section {
+    width: 94%;
+    padding: 64px 0;
+  }
+
+  .benefits-section .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .benefits-section .benefit-item {
+    min-height: 240px;
+    padding: 26px;
+  }
+}
+
+/* Điện thoại */
+@media (max-width: 600px) {
+  .benefits-section {
+    width: 92%;
+    margin-bottom: 40px;
+    padding: 52px 0;
+  }
+
+  .benefits-section .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .benefits-section .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .benefits-section .benefit-item {
+    min-height: 210px;
+    padding: 24px;
+  }
+
+  .benefits-section .benefit-item h3 {
+    font-size: 18px;
+  }
+
+  .benefits-section .benefit-item p {
+    font-size: 14px;
+  }
+}
+
+
+/* ========================================
+   7. CARD DÙNG CHUNG
+======================================== */
+
+.cyber-card {
+  border: 1px solid var(--gz-border);
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cyber-card:hover {
+  border-color: #bbbbbb;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   8. NÚT DÙNG CHUNG
+======================================== */
+
+.cyber-button {
+  border: 1px solid #222222;
+  border-radius: 4px;
+  background: #222222;
+  color: #ffffff;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cyber-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: #444444;
+  background: #444444;
+  box-shadow: none;
+}
+
+.cyber-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ========================================
+   9. TEXT LINK
+======================================== */
+
+.text-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #bbbbbb;
+  color: #222222;
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+}
+
+.text-link:hover {
+  border-color: #111111;
+}
+
+/* ========================================
+   10. INPUT, SELECT, TEXTAREA
+======================================== */
+
+.app input,
+.app select,
+.app textarea {
+  border-color: #dddddd;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #222222;
+}
+
+.app input:focus,
+.app select:focus,
+.app textarea:focus {
+  border-color: #777777;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Bỏ hiệu ứng màu neon cũ */
+
+.neon-text,
+.neon-border,
+.neon-dot {
+  text-shadow: none;
+  box-shadow: none;
+}
+
+/* ========================================
+   11. RESPONSIVE - MÁY TÍNH BẢNG
+======================================== */
+
+@media (max-width: 1100px) {
+  .categories-section {
+    width: 94%;
+  }
+
+  .category-grid {
+    gap: 20px;
+  }
+
+  .category-card {
+    padding: 26px;
+  }
+
+  .benefits-section {
+    padding: 64px 4%;
+  }
+
+  .benefits-section .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .benefits-section .benefit-item {
+    min-height: 170px;
+    padding: 26px 22px;
+  }
+}
+
+/* Tablet nhỏ và màn hình ngang hẹp */
+
+@media (max-width: 800px) {
+  .hero-section {
+    min-height: 680px;
+    height: 88vh;
+    padding: 150px 28px 105px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(34px, 8vw, 48px);
+    letter-spacing: -1.3px;
+  }
+
+  .hero-content > p {
+    font-size: 14px;
+  }
+
+  .hero-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .hero-arrow {
+    top: auto;
+    bottom: 22px;
+    width: 38px;
+    height: 38px;
+    transform: none;
+  }
+
+  .hero-arrow-left {
+    right: 68px;
+    left: auto;
+  }
+
+  .hero-arrow-right {
+    right: 20px;
+  }
+
+  .hero-pagination {
+    bottom: 38px;
+    left: 28px;
+  }
+
+  .hero-counter {
+    display: none;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   12. RESPONSIVE - ĐIỆN THOẠI
+======================================== */
+
+@media (max-width: 600px) {
+  /* Hero */
+
+  .hero-section {
+    min-height: 640px;
+    height: auto;
+    padding: 135px 22px 100px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .hero-content > p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .hero-note {
+    max-width: 260px;
+    line-height: 1.7;
+  }
+
+  .hero-pagination {
+    left: 22px;
+  }
+
+  /* Tiêu đề khu vực */
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  /* Danh mục */
+
+  .categories-section {
+    width: 92%;
+    padding: 52px 0;
+  }
+
+  .categories-section .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .category-card {
+    min-height: 210px;
+    padding: 24px;
+  }
+
+  .category-card h3 {
+    font-size: 18px;
+  }
+
+  .category-card > p {
+    font-size: 14px;
+  }
+
+  /* Benefits */
+
+  .benefits-section {
+    margin-bottom: 40px;
+    padding: 46px 5%;
+  }
+
+  .benefits-section .section-heading {
+    margin-bottom: 28px;
+  }
+
+  .benefits-section .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .benefits-section .section-heading p {
+    font-size: 14px;
+  }
+
+  .benefits-section .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .benefits-section .benefit-item {
+    min-height: auto;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .benefits-section .benefit-item h3 {
+    font-size: 16px;
+  }
+
+  .benefits-section .benefit-item p {
+    font-size: 14px;
+  }
+}
+
+/* Điện thoại màn hình nhỏ */
+
+@media (max-width: 420px) {
+  .hero-section {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-label {
+    letter-spacing: 1.5px;
+  }
+
+  .category-card {
+    padding: 22px;
+  }
+
+  .benefits-section .benefit-item {
+    padding: 20px 16px;
+  }
+}
+
+/* ========================================
+   13. HỖ TRỢ NGƯỜI DÙNG GIẢM CHUYỂN ĐỘNG
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-content,
+  .hero-arrow,
+  .hero-dot,
+  .primary-button,
+  .category-card,
+  .category-arrow,
+  .benefits-section .benefit-item,
+  .cyber-card,
+  .cyber-button {
+    animation: none;
+    transition: none;
+  }
+
+  .benefits-section .benefit-item:hover,
+  .category-card:hover,
+  .primary-button:hover {
+    transform: none;
+  }
+}

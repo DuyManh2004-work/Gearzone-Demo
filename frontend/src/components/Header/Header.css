@@ -1,0 +1,595 @@
+
+/* =========================================
+   1. HEADER CHUNG
+========================================= */
+
+.site-header,
+.site-header * {
+  box-sizing: border-box;
+}
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  color: #d0d0d0;
+  background: transparent;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.site-header:hover {
+  background: #fff;
+}
+
+/* Header ở các trang bên trong */
+.site-header.site-header-inner {
+  position: sticky;
+  top: 0;
+  left: auto;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================
+   2. CONTAINER
+========================================= */
+
+.header-container {
+  width: min(1440px, 92%);
+  min-height: 82px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* =========================================
+   3. LOGO
+========================================= */
+
+.brand {
+  flex-shrink: 0;
+  color: #d0d0d0;
+  text-decoration: none;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease;
+}
+
+.brand span {
+  color: inherit;
+}
+
+.site-header:hover .brand,
+.site-header:hover .brand span {
+  color: #111;
+}
+
+.site-header.site-header-inner .brand,
+.site-header.site-header-inner:hover .brand {
+  color: #111;
+}
+
+/* =========================================
+   4. MENU ĐIỀU HƯỚNG
+========================================= */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.main-nav a {
+  position: relative;
+  padding: 10px 0;
+  color: #d0d0d0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: none;
+  transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #fff;
+}
+
+.site-header:hover .main-nav a,
+.site-header:hover .main-nav a:hover,
+.site-header:hover .main-nav a.active {
+  color: #111;
+}
+
+.site-header.site-header-inner .main-nav a,
+.site-header.site-header-inner:hover .main-nav a {
+  color: #333;
+}
+
+.site-header.site-header-inner .main-nav a:hover,
+.site-header.site-header-inner .main-nav a.active,
+.site-header.site-header-inner:hover .main-nav a:hover,
+.site-header.site-header-inner:hover .main-nav a.active {
+  color: #000;
+}
+
+/* =========================================
+   5. TÌM KIẾM
+========================================= */
+
+.search-form {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 240px;
+  height: 42px;
+  padding: 0 5px 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header .search-form input,
+.site-header .search-form input:focus,
+.site-header .search-form input:active {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none !important;
+  outline: none !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff !important;
+  font-family: inherit;
+  font-size: 13px;
+  opacity: 1;
+  appearance: none;
+}
+
+.site-header .search-form input::placeholder {
+  color: rgba(255, 255, 255, 0.75) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+  opacity: 1;
+}
+
+.search-form button {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-form button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-form:focus-within {
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Header trang chủ khi hover chuyển sang nền trắng */
+
+.site-header:hover .search-form {
+  border-color: #111;
+  background: #fff;
+}
+
+.site-header:hover .search-form input,
+.site-header:hover .search-form input:focus,
+.site-header:hover .search-form input:active {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  caret-color: #111 !important;
+}
+
+.site-header:hover .search-form input::placeholder {
+  color: #777 !important;
+  -webkit-text-fill-color: #777 !important;
+}
+
+.site-header:hover .search-form button {
+  color: #111;
+}
+
+.site-header:hover .search-form button:hover {
+  background: #eee;
+}
+
+/* Tìm kiếm trên trang bên trong */
+
+.site-header.site-header-inner .search-form,
+.site-header.site-header-inner:hover .search-form {
+  border-color: #e5e5e5;
+  background: #f7f7f7;
+}
+
+.site-header.site-header-inner .search-form input,
+.site-header.site-header-inner .search-form input:focus,
+.site-header.site-header-inner:hover .search-form input,
+.site-header.site-header-inner:hover .search-form input:focus {
+  color: #222 !important;
+  -webkit-text-fill-color: #222 !important;
+  caret-color: #222 !important;
+}
+
+.site-header.site-header-inner .search-form input::placeholder,
+.site-header.site-header-inner:hover .search-form input::placeholder {
+  color: #888 !important;
+  -webkit-text-fill-color: #888 !important;
+}
+
+.site-header.site-header-inner .search-form button,
+.site-header.site-header-inner:hover .search-form button {
+  color: #222;
+}
+
+/* =========================================
+   6. GIỎ HÀNG
+========================================= */
+
+.cart-link {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: #d0d0d0;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.25s ease;
+}
+
+.cart-link:hover {
+  transform: translateY(-1px);
+}
+
+.site-header:hover .cart-link {
+  color: #111;
+}
+
+.site-header.site-header-inner .cart-link,
+.site-header.site-header-inner:hover .cart-link {
+  color: #222;
+}
+
+.cart-count {
+  position: absolute;
+  top: -9px;
+  right: -10px;
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 50px;
+  background: #fff;
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.site-header:hover .cart-count {
+  background: #111;
+  color: #fff;
+}
+
+.site-header.site-header-inner .cart-count,
+.site-header.site-header-inner:hover .cart-count {
+  background: #111;
+  color: #fff;
+}
+
+/* =========================================
+   7. TÀI KHOẢN VÀ ĐĂNG NHẬP
+========================================= */
+
+/* =========================================
+   7. TÀI KHOẢN VÀ ĐĂNG NHẬP
+========================================= */
+
+.header-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-account a.header-login {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 14px;
+
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+
+  background: transparent;
+  color: #d0d0d0;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.header-account a.header-login svg {
+  flex-shrink: 0;
+  color: inherit;
+  stroke: currentColor;
+}
+
+.header-account a.header-login span {
+  color: inherit;
+}
+
+/* Trang chủ: khi Header chuyển sang nền trắng */
+.site-header:not(.site-header-inner):hover
+.header-account a.header-login {
+  border-color: #222;
+  background: transparent;
+  color: #111;
+}
+
+/* Trang chủ: hover trực tiếp nút đăng nhập */
+.site-header:not(.site-header-inner):hover
+.header-account a.header-login:hover {
+  border-color: #222;
+  background: #222;
+  color: #fff;
+}
+
+/* Các trang bên trong: trạng thái bình thường */
+.site-header.site-header-inner
+.header-account a.header-login {
+  border-color: #e5e5e5;
+  background: transparent;
+  color: #222;
+}
+
+/* Các trang bên trong: hover nút đăng nhập */
+.site-header.site-header-inner
+.header-account a.header-login:hover {
+  border-color: #222;
+  background: #222;
+  color: #fff !important;
+}
+
+/* Đảm bảo chữ và icon đều chuyển sang trắng */
+.site-header.site-header-inner
+.header-account a.header-login:hover span,
+.site-header.site-header-inner
+.header-account a.header-login:hover svg {
+  color: #fff !important;
+  stroke: #fff;
+}
+
+/* =========================================
+   8. NÚT ĐĂNG XUẤT
+========================================= */
+
+.header-account .header-logout {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: transparent;
+  color: #d0d0d0;
+  cursor: pointer;
+  transition: color 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.header-account .header-logout svg {
+  color: inherit;
+  stroke: currentColor;
+}
+
+/* Khi header trang chủ chuyển nền trắng */
+
+.site-header:hover .header-account .header-logout {
+  border-color: #222;
+  background: transparent;
+  color: #222;
+}
+
+.site-header:hover .header-account .header-logout:hover {
+  border-color: #222;
+  background: #222;
+  color: #fff;
+}
+
+/* Trên trang bên trong */
+
+.site-header.site-header-inner .header-account .header-logout,
+.site-header.site-header-inner:hover .header-account .header-logout {
+  border-color: #e5e5e5;
+  background: transparent;
+  color: #222;
+}
+
+.site-header.site-header-inner .header-account .header-logout:hover,
+.site-header.site-header-inner:hover .header-account .header-logout:hover {
+  border-color: #222;
+  background: #222;
+  color: #fff;
+}
+
+/* =========================================
+   9. MENU MOBILE
+========================================= */
+
+.mobile-menu-button {
+  display: none;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: #d0d0d0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.site-header:hover .mobile-menu-button {
+  color: #111;
+}
+
+.site-header.site-header-inner .mobile-menu-button,
+.site-header.site-header-inner:hover .mobile-menu-button {
+  color: #222;
+}
+
+/* =========================================
+   10. TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .header-container {
+    min-height: 72px;
+    gap: 14px;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    margin-left: auto;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 5%;
+    background: rgba(15, 15, 15, 0.97);
+  }
+
+  .main-nav.nav-open {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 14px 0;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .search-form {
+    width: 180px;
+    height: 40px;
+  }
+
+  .site-header:hover .main-nav {
+    background: #fff;
+  }
+
+  .site-header.site-header-inner .main-nav,
+  .site-header.site-header-inner:hover .main-nav {
+    background: #fff;
+  }
+}
+
+/* =========================================
+   11. MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .header-account a.header-login {
+    gap: 0;
+    padding: 9px;
+  }
+
+  .header-account a.header-login span {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-container {
+    width: 94%;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .brand {
+    font-size: 22px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .search-form {
+    width: 145px;
+    height: 36px;
+    padding-left: 10px;
+  }
+
+  .search-form button {
+    width: 30px;
+    height: 30px;
+  }
+}

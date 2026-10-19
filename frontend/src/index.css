@@ -1,0 +1,361 @@
+
+/* ========================================
+   GEARZONE - GLOBAL DESIGN SYSTEM
+   Minimalist: White / Black / Gray
+======================================== */
+
+/* 1. Design tokens */
+:root {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+
+  color: #222222;
+  background: #ffffff;
+
+  --gz-black: #171717;
+  --gz-text: #222222;
+  --gz-muted: #777777;
+
+  --gz-bg: #ffffff;
+  --gz-light: #f6f6f6;
+  --gz-border: #e8e8e8;
+  --gz-border-dark: #cccccc;
+
+  --gz-radius: 4px;
+  --gz-container: 1200px;
+
+  --gz-transition: 0.2s ease;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--gz-bg);
+  color: var(--gz-text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  object-fit: cover;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--gz-black);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.7;
+}
+
+::selection {
+  background: #222222;
+  color: #ffffff;
+}
+
+/* 3. Shared container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 96%;
+  max-width: 1800px;
+  margin-inline: auto;
+}
+
+/* 4. Common section heading */
+.section-title {
+  margin-bottom: 12px;
+  color: var(--gz-black);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.section-subtitle {
+  color: var(--gz-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 5. Buttons */
+.primary-button,
+.cyber-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 44px;
+  padding: 11px 20px;
+
+  border: 1px solid var(--gz-black);
+  border-radius: var(--gz-radius);
+
+  background: var(--gz-black);
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+
+  transition:
+    background var(--gz-transition),
+    color var(--gz-transition),
+    border-color var(--gz-transition);
+}
+
+.primary-button:hover,
+.cyber-button:hover:not(:disabled) {
+  border-color: #444444;
+  background: #444444;
+  color: #ffffff;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 10px 18px;
+
+  border: 1px solid var(--gz-border-dark);
+  border-radius: var(--gz-radius);
+
+  background: #ffffff;
+  color: var(--gz-text);
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition: all var(--gz-transition);
+}
+
+.secondary-button:hover {
+  border-color: var(--gz-black);
+  background: var(--gz-light);
+}
+
+/* 6. Shared cards */
+.cyber-card {
+  overflow: hidden;
+  border: 1px solid var(--gz-border);
+  border-radius: var(--gz-radius);
+  background: #ffffff;
+  box-shadow: none;
+  transition: border-color var(--gz-transition);
+}
+
+.cyber-card:hover {
+  border-color: var(--gz-border-dark);
+  box-shadow: none;
+}
+
+/* 7. Form elements */
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+
+  border: 1px solid #dddddd;
+  border-radius: var(--gz-radius);
+
+  background: #ffffff;
+  color: var(--gz-text);
+
+  outline: none;
+  transition:
+    border-color var(--gz-transition),
+    box-shadow var(--gz-transition);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999999;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #777777;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #f5f5f5;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+/* 8. Product images */
+.product-image,
+.product-card img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* 9. Remove old neon styling */
+.neon-text {
+  color: var(--gz-text);
+  text-shadow: none;
+}
+
+.neon-border {
+  border-color: var(--gz-border);
+  box-shadow: none;
+}
+
+.neon-dot {
+  background: #777777;
+  box-shadow: none;
+}
+
+/* 10. Focus accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #555555;
+  outline-offset: 3px;
+}
+
+/* 11. Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #bbbbbb #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bbbbbb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+/* 12. Responsive */
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 32px, var(--gz-container));
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .primary-button,
+  .cyber-button,
+  .secondary-button {
+    padding-inline: 14px;
+  }
+}
+
+/* 13. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

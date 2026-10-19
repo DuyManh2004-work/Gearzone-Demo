@@ -1,0 +1,201 @@
+
+/* ==============================
+   TOAST NOTIFICATION - GEARZONE
+============================== */
+
+.toast {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  width: min(390px, calc(100vw - 32px));
+  padding: 18px;
+
+  background: #ffffff;
+  color: #1f2937;
+
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #16a34a;
+  border-radius: 12px;
+
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    0 3px 8px rgba(0, 0, 0, 0.04);
+
+  animation: toast-slide-in 0.3s ease-out;
+}
+
+/* Trạng thái thành công */
+.toast-success {
+  border-left-color: #16a34a;
+}
+
+.toast-success .toast-icon {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+/* Trạng thái lỗi */
+.toast-error {
+  border-left-color: #dc2626;
+}
+
+.toast-error .toast-icon {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+/* Icon */
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+}
+
+/* Nội dung thông báo */
+.toast-content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.toast-content strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.toast-content p {
+  margin: 0;
+
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+/* Link xem giỏ hàng */
+.toast-link {
+  display: inline-flex;
+  align-items: center;
+
+  margin-top: 10px;
+
+  color: #111827;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.toast-link:hover {
+  color: #16a34a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Nút đóng */
+.toast-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  margin: -5px -5px 0 0;
+  padding: 0;
+
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.toast-close:hover {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.toast-close:focus-visible,
+.toast-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* Hiệu ứng xuất hiện */
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tôn trọng cài đặt giảm chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+
+  .toast-link,
+  .toast-close {
+    transition: none;
+  }
+}
+
+/* Responsive - điện thoại */
+@media (max-width: 480px) {
+  .toast {
+    top: 80px;
+    right: 12px;
+
+    width: calc(100vw - 24px);
+    padding: 14px;
+    gap: 11px;
+
+    border-radius: 10px;
+  }
+
+  .toast-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .toast-content strong {
+    font-size: 14px;
+  }
+
+  .toast-content p {
+    font-size: 13px;
+  }
+}
